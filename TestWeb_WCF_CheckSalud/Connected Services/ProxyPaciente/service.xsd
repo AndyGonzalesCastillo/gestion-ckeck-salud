@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" />
+  <xs:element name="usp_ListarPaciente">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_ListarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" minOccurs="0" name="usp_ListarPacienteResult" nillable="true" type="q1:ArrayOfPacienteDC" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_InsertarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" minOccurs="0" name="objPacienteDC" nillable="true" type="q2:PacienteDC" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_InsertarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usp_InsertarPacienteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_ActualizarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" minOccurs="0" name="objPacienteDC" nillable="true" type="q3:PacienteDC" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_ActualizarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usp_ActualizarPacienteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_EliminarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strCodigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_EliminarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usp_EliminarPacienteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_ConsultarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strCodigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usp_ConsultarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" minOccurs="0" name="usp_ConsultarPacienteResult" nillable="true" type="q4:PacienteDC" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

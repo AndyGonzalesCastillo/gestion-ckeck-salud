@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="7ebd504b-4328-4710-926f-724fd5b62d35" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioPaciente/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4a97816f-b28c-4659-8868-4ee651c847ca" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioPaciente/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="aaab90cd-ef92-4791-82a2-25492cfd47c4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioPaciente/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fa401a0f-b677-44d6-9299-7d1a1d27f92d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioPaciente/mex" />
+    <MetadataFile FileName="WCF_CheckSalud.xsd" MetadataType="Schema" ID="d98ebc2d-8d97-4950-815c-71780bb99775" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioPaciente/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

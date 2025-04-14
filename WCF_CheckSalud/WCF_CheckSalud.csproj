@@ -1,0 +1,283 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE64F5EB-0537-44DB-8944-4A18B14F4D3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF_CheckSalud</RootNamespace>
+    <AssemblyName>WCF_CheckSalud</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDCheckSalud.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDCheckSalud.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDCheckSalud.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDCheckSalud.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDCheckSalud.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="IService1.cs" />
+    <Compile Include="IServicioAnalisis.cs" />
+    <Compile Include="IServicioAuditor.cs" />
+    <Compile Include="IServicioConsultas.cs" />
+    <Compile Include="IServicioEmpresa.cs" />
+    <Compile Include="IServicioEnfermedad.cs" />
+    <Compile Include="IServicioEspecialidad.cs" />
+    <Compile Include="IServicioEvaluacion.cs" />
+    <Compile Include="IServicioMedico.cs" />
+    <Compile Include="IServicioPaciente.cs" />
+    <Compile Include="IServicioResultado.cs" />
+    <Compile Include="IServicioUbicacion.cs" />
+    <Compile Include="IServicioUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service1.cs" />
+    <Compile Include="ServicioAnalisis.cs" />
+    <Compile Include="ServicioAuditor.cs" />
+    <Compile Include="ServicioConsultas.cs" />
+    <Compile Include="ServicioEmpresa.cs" />
+    <Compile Include="ServicioEnfermedad.cs" />
+    <Compile Include="ServicioEspecialidad.cs" />
+    <Compile Include="ServicioEvaluacion.cs" />
+    <Compile Include="ServicioMedico.cs" />
+    <Compile Include="ServicioPaciente.cs" />
+    <Compile Include="ServicioResultado.cs" />
+    <Compile Include="ServicioUbicacion.cs" />
+    <Compile Include="ServicioUsuario.cs" />
+    <Compile Include="sp_ConsultaEspecialidadFechas_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ConsultaMedicosEspecialidad_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ConsultasAsignadasMedico_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetConsultasByDate1_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetConsultasByDate_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ListarConsultasPaciente_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ListarEspecialidad_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ListarMedicosEspecialidad_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ResultadosAnalisisPaciente_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_VerConsultasPendientes_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Analisis.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Auditor.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Consultas.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Empresa.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Enfermedad.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Especialidad.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Evaluacion.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Horario.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Medico.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Paciente.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Resultados.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Ubicacion.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Usuario.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarAnalisis_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarEmpresa_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarMedico_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarPaciente_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarResultado_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarUsuario_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarAnalisis_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarAuditor_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEmpresa_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEnfermedad_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEspecialidad_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarMedico2_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarMedico_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPaciente2_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPaciente_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarResultados_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarUbicacion_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarUltAnalisis_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarUltEvaluacion_Result.cs">
+      <DependentUpon>BDCheckSalud.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="BDCheckSalud.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDCheckSalud.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BDCheckSalud.edmx.diagram">
+      <DependentUpon>BDCheckSalud.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BDCheckSalud.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDCheckSalud.edmx</DependentUpon>
+      <LastGenOutput>BDCheckSalud.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BDCheckSalud.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDCheckSalud.edmx</DependentUpon>
+      <LastGenOutput>BDCheckSalud.cs</LastGenOutput>
+    </Content>
+    <Content Include="BD\bd.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>
+    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>
+  </PropertyGroup>
+  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

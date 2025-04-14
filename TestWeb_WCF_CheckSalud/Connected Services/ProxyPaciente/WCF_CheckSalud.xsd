@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPacienteDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PacienteDC" nillable="true" type="tns:PacienteDC" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPacienteDC" nillable="true" type="tns:ArrayOfPacienteDC" />
+  <xs:complexType name="PacienteDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApeNomPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApePaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodEmpresa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DirecPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DniPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edad" type="xs:int" />
+      <xs:element minOccurs="0" name="EmailPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Est_Paciente" type="xs:int" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FecIngreso" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FecNacPaciente" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FecRegistro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FecUltMod" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdUbigeo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LugarTrabajo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sexo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sexo_Paciente" type="xs:int" />
+      <xs:element minOccurs="0" name="TelPaciente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoSangre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo_Cliente" type="xs:int" />
+      <xs:element minOccurs="0" name="Tipo_Sangre" type="xs:int" />
+      <xs:element minOccurs="0" name="UsuRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UsuUltMod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="departamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="distrito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="provincia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PacienteDC" nillable="true" type="tns:PacienteDC" />
+</xs:schema>

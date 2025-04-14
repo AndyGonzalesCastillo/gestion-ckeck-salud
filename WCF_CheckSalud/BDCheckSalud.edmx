@@ -1,0 +1,2478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CheckSalud_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Analisis">
+          <Key>
+            <PropertyRef Name="codAnalisis" />
+          </Key>
+          <Property Name="codAnalisis" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="descAnalisis" Type="nvarchar" MaxLength="99" />
+          <Property Name="costo" Type="money" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="Fec_reg" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Auditor">
+          <Key>
+            <PropertyRef Name="codAuditor" />
+          </Key>
+          <Property Name="codAuditor" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="codMedico" Type="nchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Tb_Consultas">
+          <Key>
+            <PropertyRef Name="codConsulta" />
+          </Key>
+          <Property Name="codConsulta" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="codPaciente" Type="nvarchar" MaxLength="8" />
+          <Property Name="codMedico" Type="nchar" MaxLength="4" />
+          <Property Name="motivoConsulta" Type="nvarchar" MaxLength="255" />
+          <Property Name="fechaConsulta" Type="datetime" />
+          <Property Name="estado" Type="nvarchar" MaxLength="20" />
+          <Property Name="resultados" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tb_Empresa">
+          <Key>
+            <PropertyRef Name="codEmpresa" />
+          </Key>
+          <Property Name="codEmpresa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Raz_soc_emp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dir_emp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel_emp" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ruc_emp" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Rep_emp" Type="nvarchar" MaxLength="30" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" />
+          <Property Name="fec_Ingreso" Type="datetime" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Enfermedad">
+          <Key>
+            <PropertyRef Name="codEnfermedad" />
+          </Key>
+          <Property Name="codEnfermedad" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descEnfermedad" Type="varchar" MaxLength="99" />
+        </EntityType>
+        <EntityType Name="Tb_Especialidad">
+          <Key>
+            <PropertyRef Name="codEspecialidad" />
+          </Key>
+          <Property Name="codEspecialidad" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="descEspecialidad" Type="varchar" MaxLength="99" />
+        </EntityType>
+        <EntityType Name="Tb_Evaluacion">
+          <Key>
+            <PropertyRef Name="codEvaluacion" />
+          </Key>
+          <Property Name="codEvaluacion" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Fec_Eva" Type="date" />
+          <Property Name="estado" Type="int" />
+          <Property Name="codMedico" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="codAuditor" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Fec_reg" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Horario">
+          <Key>
+            <PropertyRef Name="codHorario" />
+          </Key>
+          <Property Name="codHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codMedico" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="diaSemana" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="horaInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="horaFin" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Medico">
+          <Key>
+            <PropertyRef Name="codMedico" />
+          </Key>
+          <Property Name="codMedico" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="dniMedic" Type="nchar" MaxLength="8" />
+          <Property Name="nomMedico" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apeMedico" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="numColegiatura" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="emailMedico" Type="varchar" MaxLength="320" />
+          <Property Name="fotoMedico" Type="image" />
+          <Property Name="direcMedico" Type="varchar" MaxLength="99" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="codEspecialidad" Type="nchar" MaxLength="2" />
+          <Property Name="Login_Usuario" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_Reg" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fech_Ult_Mod" Type="date" />
+          <Property Name="Usu_Ult_Mod" Type="nvarchar" MaxLength="20" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="fec_ingreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="codPaciente" />
+          </Key>
+          <Property Name="codPaciente" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="nomPaciente" Type="nvarchar" MaxLength="99" Nullable="false" />
+          <Property Name="apePaciente" Type="nvarchar" MaxLength="99" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="dniPaciente" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="sexo" Type="int" Nullable="false" />
+          <Property Name="direcPaciente" Type="varchar" MaxLength="20" />
+          <Property Name="tipoSangre" Type="char" MaxLength="1" />
+          <Property Name="fotoPaciente" Type="image" />
+          <Property Name="emailPaciente" Type="varchar" MaxLength="320" />
+          <Property Name="fechaIngreso" Type="datetime" />
+          <Property Name="numTelefono" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="tipoCliente" Type="int" />
+          <Property Name="codEmpresa" Type="nvarchar" MaxLength="5" />
+          <Property Name="Fec_reg" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="nvarchar" MaxLength="20" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Resultados">
+          <Key>
+            <PropertyRef Name="codResultado" />
+          </Key>
+          <Property Name="codResultado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="peso" Type="float" />
+          <Property Name="altura" Type="float" />
+          <Property Name="sangre" Type="nvarchar" MaxLength="99" />
+          <Property Name="orina" Type="nvarchar" MaxLength="99" />
+          <Property Name="ekg" Type="nvarchar" MaxLength="99" />
+          <Property Name="spirometria" Type="nvarchar" MaxLength="99" />
+          <Property Name="psicologia" Type="nvarchar" MaxLength="99" />
+          <Property Name="rayosX" Type="nvarchar" MaxLength="99" />
+          <Property Name="audicion" Type="nvarchar" MaxLength="99" />
+          <Property Name="vista" Type="nvarchar" MaxLength="99" />
+          <Property Name="codAnalisis" Type="char" MaxLength="5" />
+          <Property Name="codEvaluacion" Type="char" MaxLength="5" />
+          <Property Name="codEnfermedad" Type="varchar" MaxLength="5" />
+          <Property Name="recomendaciones" Type="nvarchar" MaxLength="99" />
+          <Property Name="codPaciente" Type="nvarchar" MaxLength="8" />
+          <Property Name="Fec_reg" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Ubicacion">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdProv" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdDist" Type="nvarchar" MaxLength="255" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="nvarchar" MaxLength="20" />
+          <Property Name="Niv_Usuario" Type="int" />
+          <Property Name="Est_Usuario" Type="int" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Tb_Audito__codMe__46E78A0C">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="0..1" />
+          <End Role="Tb_Auditor" Type="Self.Tb_Auditor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Auditor">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__codMe__7755B73D">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="0..1" />
+          <End Role="Tb_Consultas" Type="Self.Tb_Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Consultas">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__codPa__76619304">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Consultas" Type="Self.Tb_Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Consultas">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Empres__Id_Ub__440B1D61">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="0..1" />
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empresa">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Evalua__codAu__45F365D3">
+          <End Role="Tb_Auditor" Type="Self.Tb_Auditor" Multiplicity="1" />
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Auditor">
+              <PropertyRef Name="codAuditor" />
+            </Principal>
+            <Dependent Role="Tb_Evaluacion">
+              <PropertyRef Name="codAuditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Evalua__codMe__44FF419A">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="1" />
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Evaluacion">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__codEs__412EB0B6">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="0..1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Especialidad">
+              <PropertyRef Name="codEspecialidad" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="codEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__Id_Ub__4316F928">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__Login__4222D4EF">
+          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="0..1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Usuario">
+              <PropertyRef Name="Login_Usuario" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="Login_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__codEm__398D8EEE">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="codEmpresa" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="codEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__codPa__3E52440B">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="1" />
+          <End Role="Tb_Paciente1" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Paciente1">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__Id_Ub__3A81B327">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Result__codAn__3B75D760">
+          <End Role="Tb_Analisis" Type="Self.Tb_Analisis" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Analisis">
+              <PropertyRef Name="codAnalisis" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Result__codEn__3D5E1FD2">
+          <End Role="Tb_Enfermedad" Type="Self.Tb_Enfermedad" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Enfermedad">
+              <PropertyRef Name="codEnfermedad" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codEnfermedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Result__codEv__3C69FB99">
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Evaluacion">
+              <PropertyRef Name="codEvaluacion" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codEvaluacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="1" />
+          <End Role="Tb_Horario" Type="Self.Tb_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Horario">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Result_codPa">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_ActualizarConsultasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_CancelarConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codConsulta" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_ConsultaEspecialidadFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+          <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_ConsultaMedicosEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codEspecialidad" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ConsultasAsignadasMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codMedico" Type="nchar" Mode="In" />
+          <Parameter Name="estado" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetConsultasByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaConsulta" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_GetConsultasByDate1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaConsulta" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ListarConsultasPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dniPaciente" Type="nchar" Mode="In" />
+          <Parameter Name="estado" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ListarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarMedicosEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ProgramarConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codPaciente" Type="nvarchar" Mode="In" />
+          <Parameter Name="codMedico" Type="nchar" Mode="In" />
+          <Parameter Name="motivoConsulta" Type="nvarchar" Mode="In" />
+          <Parameter Name="fechaConsulta" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_RegistrarResultadosConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codConsulta" Type="char" Mode="In" />
+          <Parameter Name="resultados" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ResultadosAnalisisPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codPaciente" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_VerConsultasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ActualizarAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+          <Parameter Name="vDes" Type="varchar" Mode="In" />
+          <Parameter Name="vCos" Type="money" Mode="In" />
+          <Parameter Name="vEst" Type="int" Mode="In" />
+          <Parameter Name="vUsu_Ult_Mod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VcodEmpresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="VRaz_soc_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VDir_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VTel_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VRuc_emp" Type="nchar" Mode="In" />
+          <Parameter Name="VRep_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VId_ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="Vestado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEstadoPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+          <Parameter Name="vNom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vApe" Type="nvarchar" Mode="In" />
+          <Parameter Name="vFNac" Type="date" Mode="In" />
+          <Parameter Name="vDni" Type="nchar" Mode="In" />
+          <Parameter Name="vSexo" Type="int" Mode="In" />
+          <Parameter Name="vDir" Type="varchar" Mode="In" />
+          <Parameter Name="vSang" Type="char" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vFIngr" Type="datetime" Mode="In" />
+          <Parameter Name="vTelef" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEsta" Type="int" Mode="In" />
+          <Parameter Name="vTipo" Type="int" Mode="In" />
+          <Parameter Name="vCEmpr" Type="nvarchar" Mode="In" />
+          <Parameter Name="vUsu_Ult_Mod" Type="nvarchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCodMedico" Type="nchar" Mode="In" />
+          <Parameter Name="dniMedic" Type="nchar" Mode="In" />
+          <Parameter Name="nomMedico" Type="varchar" Mode="In" />
+          <Parameter Name="apeMedico" Type="varchar" Mode="In" />
+          <Parameter Name="numColegiatura" Type="char" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="emailMedico" Type="varchar" Mode="In" />
+          <Parameter Name="direcMedico" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+          <Parameter Name="codEspecialidad" Type="nchar" Mode="In" />
+          <Parameter Name="Login_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Usu_Ult_Mod" Type="nvarchar" Mode="In" />
+          <Parameter Name="Id_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarResultado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="varchar" Mode="In" />
+          <Parameter Name="vPeso" Type="decimal" Mode="In" />
+          <Parameter Name="vAltura" Type="decimal" Mode="In" />
+          <Parameter Name="vSangre" Type="nvarchar" Mode="In" />
+          <Parameter Name="vOrina" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEkg" Type="nvarchar" Mode="In" />
+          <Parameter Name="vSpiro" Type="nvarchar" Mode="In" />
+          <Parameter Name="vPsico" Type="nvarchar" Mode="In" />
+          <Parameter Name="vXray" Type="nvarchar" Mode="In" />
+          <Parameter Name="vAudi" Type="nvarchar" Mode="In" />
+          <Parameter Name="vVisi" Type="nvarchar" Mode="In" />
+          <Parameter Name="vCodEnfe" Type="char" Mode="In" />
+          <Parameter Name="vRecom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vCodPac" Type="nvarchar" Mode="In" />
+          <Parameter Name="vUsu_Ult_Mod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VcodEmpresa" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCodMedico" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarResultado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login_Usuario" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VcodEmpresa" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VcodMedico" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarResultado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDes" Type="varchar" Mode="In" />
+          <Parameter Name="vCos" Type="money" Mode="In" />
+          <Parameter Name="vEst" Type="int" Mode="In" />
+          <Parameter Name="vUsu_Reg" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VRaz_soc_empl" Type="nvarchar" Mode="In" />
+          <Parameter Name="VDir_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VTel_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VRuc_emp" Type="nchar" Mode="In" />
+          <Parameter Name="VRep_emp" Type="nvarchar" Mode="In" />
+          <Parameter Name="VId_ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="Vestado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEstadoPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vNom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vApe" Type="nvarchar" Mode="In" />
+          <Parameter Name="vFNac" Type="date" Mode="In" />
+          <Parameter Name="vDni" Type="nchar" Mode="In" />
+          <Parameter Name="vSexo" Type="int" Mode="In" />
+          <Parameter Name="vDir" Type="varchar" Mode="In" />
+          <Parameter Name="vSang" Type="char" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vFIngr" Type="datetime" Mode="In" />
+          <Parameter Name="vTelef" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEsta" Type="int" Mode="In" />
+          <Parameter Name="vTipo" Type="int" Mode="In" />
+          <Parameter Name="vCEmpr" Type="nvarchar" Mode="In" />
+          <Parameter Name="vUsu_Reg" Type="nvarchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vFEva" Type="date" Mode="In" />
+          <Parameter Name="vMed" Type="nchar" Mode="In" />
+          <Parameter Name="vAud" Type="char" Mode="In" />
+          <Parameter Name="vEst" Type="int" Mode="In" />
+          <Parameter Name="vUsu_Reg" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dniMedic" Type="nchar" Mode="In" />
+          <Parameter Name="nomMedico" Type="varchar" Mode="In" />
+          <Parameter Name="apeMedico" Type="varchar" Mode="In" />
+          <Parameter Name="numColegiatura" Type="char" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="emailMedico" Type="varchar" Mode="In" />
+          <Parameter Name="direcMedico" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+          <Parameter Name="codEspecialidad" Type="nchar" Mode="In" />
+          <Parameter Name="Login_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Usu_Registro" Type="nvarchar" Mode="In" />
+          <Parameter Name="Id_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="fec_ingreso" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarResultado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vPeso" Type="decimal" Mode="In" />
+          <Parameter Name="vAltura" Type="decimal" Mode="In" />
+          <Parameter Name="vSangre" Type="nvarchar" Mode="In" />
+          <Parameter Name="vOrina" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEkg" Type="nvarchar" Mode="In" />
+          <Parameter Name="vSpiro" Type="nvarchar" Mode="In" />
+          <Parameter Name="vPsico" Type="nvarchar" Mode="In" />
+          <Parameter Name="vXray" Type="nvarchar" Mode="In" />
+          <Parameter Name="vAudi" Type="nvarchar" Mode="In" />
+          <Parameter Name="vVisi" Type="nvarchar" Mode="In" />
+          <Parameter Name="vCodAnal" Type="char" Mode="In" />
+          <Parameter Name="vCodEva" Type="char" Mode="In" />
+          <Parameter Name="vCodEnfe" Type="char" Mode="In" />
+          <Parameter Name="vRecom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vCodPac" Type="nvarchar" Mode="In" />
+          <Parameter Name="vUsu_Registro" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Usu_Registro" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarAuditor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEnfermedad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarMedico2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarPaciente2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarResultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarUltAnalisis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarUltEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CheckSalud_DBModelStoreContainer">
+          <EntitySet Name="Tb_Analisis" EntityType="Self.Tb_Analisis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Auditor" EntityType="Self.Tb_Auditor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Consultas" EntityType="Self.Tb_Consultas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Empresa" EntityType="Self.Tb_Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Enfermedad" EntityType="Self.Tb_Enfermedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Especialidad" EntityType="Self.Tb_Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Evaluacion" EntityType="Self.Tb_Evaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Horario" EntityType="Self.Tb_Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Medico" EntityType="Self.Tb_Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Resultados" EntityType="Self.Tb_Resultados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Ubicacion" EntityType="Self.Tb_Ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Tb_Audito__codMe__46E78A0C" Association="Self.FK__Tb_Audito__codMe__46E78A0C">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Auditor" EntitySet="Tb_Auditor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__codMe__7755B73D" Association="Self.FK__Tb_Consul__codMe__7755B73D">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Consultas" EntitySet="Tb_Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__codPa__76619304" Association="Self.FK__Tb_Consul__codPa__76619304">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Consultas" EntitySet="Tb_Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Empres__Id_Ub__440B1D61" Association="Self.FK__Tb_Empres__Id_Ub__440B1D61">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Evalua__codAu__45F365D3" Association="Self.FK__Tb_Evalua__codAu__45F365D3">
+            <End Role="Tb_Auditor" EntitySet="Tb_Auditor" />
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Evalua__codMe__44FF419A" Association="Self.FK__Tb_Evalua__codMe__44FF419A">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__codEs__412EB0B6" Association="Self.FK__Tb_Medico__codEs__412EB0B6">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__Id_Ub__4316F928" Association="Self.FK__Tb_Medico__Id_Ub__4316F928">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__Login__4222D4EF" Association="Self.FK__Tb_Medico__Login__4222D4EF">
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__codEm__398D8EEE" Association="Self.FK__Tb_Pacien__codEm__398D8EEE">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__codPa__3E52440B" Association="Self.FK__Tb_Pacien__codPa__3E52440B">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Paciente1" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__Id_Ub__3A81B327" Association="Self.FK__Tb_Pacien__Id_Ub__3A81B327">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Result__codAn__3B75D760" Association="Self.FK__Tb_Result__codAn__3B75D760">
+            <End Role="Tb_Analisis" EntitySet="Tb_Analisis" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Result__codEn__3D5E1FD2" Association="Self.FK__Tb_Result__codEn__3D5E1FD2">
+            <End Role="Tb_Enfermedad" EntitySet="Tb_Enfermedad" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Result__codEv__3C69FB99" Association="Self.FK__Tb_Result__codEv__3C69FB99">
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico" Association="Self.FK_Horario_Medico">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Horario" EntitySet="Tb_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Result_codPa" Association="Self.FK_Tb_Result_codPa">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CheckSalud_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Analisis">
+          <Key>
+            <PropertyRef Name="codAnalisis" />
+          </Key>
+          <Property Name="codAnalisis" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="descAnalisis" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="Fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Resultados" Relationship="Self.FK__Tb_Result__codAn__3B75D760" FromRole="Tb_Analisis" ToRole="Tb_Resultados" />
+        </EntityType>
+        <EntityType Name="Tb_Auditor">
+          <Key>
+            <PropertyRef Name="codAuditor" />
+          </Key>
+          <Property Name="codAuditor" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="codMedico" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Audito__codMe__46E78A0C" FromRole="Tb_Auditor" ToRole="Tb_Medico" />
+          <NavigationProperty Name="Tb_Evaluacion" Relationship="Self.FK__Tb_Evalua__codAu__45F365D3" FromRole="Tb_Auditor" ToRole="Tb_Evaluacion" />
+        </EntityType>
+        <EntityType Name="Tb_Consultas">
+          <Key>
+            <PropertyRef Name="codConsulta" />
+          </Key>
+          <Property Name="codConsulta" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="codPaciente" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="codMedico" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="motivoConsulta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fechaConsulta" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="resultados" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Consul__codMe__7755B73D" FromRole="Tb_Consultas" ToRole="Tb_Medico" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK__Tb_Consul__codPa__76619304" FromRole="Tb_Consultas" ToRole="Tb_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Empresa">
+          <Key>
+            <PropertyRef Name="codEmpresa" />
+          </Key>
+          <Property Name="codEmpresa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Raz_soc_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dir_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel_emp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ruc_emp" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Rep_emp" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="fec_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Ubicacion" Relationship="Self.FK__Tb_Empres__Id_Ub__440B1D61" FromRole="Tb_Empresa" ToRole="Tb_Ubicacion" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK__Tb_Pacien__codEm__398D8EEE" FromRole="Tb_Empresa" ToRole="Tb_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Enfermedad">
+          <Key>
+            <PropertyRef Name="codEnfermedad" />
+          </Key>
+          <Property Name="codEnfermedad" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descEnfermedad" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Resultados" Relationship="Self.FK__Tb_Result__codEn__3D5E1FD2" FromRole="Tb_Enfermedad" ToRole="Tb_Resultados" />
+        </EntityType>
+        <EntityType Name="Tb_Especialidad">
+          <Key>
+            <PropertyRef Name="codEspecialidad" />
+          </Key>
+          <Property Name="codEspecialidad" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="descEspecialidad" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Medico__codEs__412EB0B6" FromRole="Tb_Especialidad" ToRole="Tb_Medico" />
+        </EntityType>
+        <EntityType Name="Tb_Evaluacion">
+          <Key>
+            <PropertyRef Name="codEvaluacion" />
+          </Key>
+          <Property Name="codEvaluacion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Eva" Type="DateTime" Precision="0" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="codMedico" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="codAuditor" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Auditor" Relationship="Self.FK__Tb_Evalua__codAu__45F365D3" FromRole="Tb_Evaluacion" ToRole="Tb_Auditor" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Evalua__codMe__44FF419A" FromRole="Tb_Evaluacion" ToRole="Tb_Medico" />
+          <NavigationProperty Name="Tb_Resultados" Relationship="Self.FK__Tb_Result__codEv__3C69FB99" FromRole="Tb_Evaluacion" ToRole="Tb_Resultados" />
+        </EntityType>
+        <EntityType Name="Tb_Horario">
+          <Key>
+            <PropertyRef Name="codHorario" />
+          </Key>
+          <Property Name="codHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codMedico" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="diaSemana" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="horaInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="horaFin" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK_Horario_Medico" FromRole="Tb_Horario" ToRole="Tb_Medico" />
+        </EntityType>
+        <EntityType Name="Tb_Medico">
+          <Key>
+            <PropertyRef Name="codMedico" />
+          </Key>
+          <Property Name="codMedico" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="dniMedic" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="nomMedico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apeMedico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numColegiatura" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="emailMedico" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="fotoMedico" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="direcMedico" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="codEspecialidad" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Reg" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fech_Ult_Mod" Type="DateTime" Precision="0" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="fec_ingreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tb_Auditor" Relationship="Self.FK__Tb_Audito__codMe__46E78A0C" FromRole="Tb_Medico" ToRole="Tb_Auditor" />
+          <NavigationProperty Name="Tb_Consultas" Relationship="Self.FK__Tb_Consul__codMe__7755B73D" FromRole="Tb_Medico" ToRole="Tb_Consultas" />
+          <NavigationProperty Name="Tb_Especialidad" Relationship="Self.FK__Tb_Medico__codEs__412EB0B6" FromRole="Tb_Medico" ToRole="Tb_Especialidad" />
+          <NavigationProperty Name="Tb_Evaluacion" Relationship="Self.FK__Tb_Evalua__codMe__44FF419A" FromRole="Tb_Medico" ToRole="Tb_Evaluacion" />
+          <NavigationProperty Name="Tb_Horario" Relationship="Self.FK_Horario_Medico" FromRole="Tb_Medico" ToRole="Tb_Horario" />
+          <NavigationProperty Name="Tb_Ubicacion" Relationship="Self.FK__Tb_Medico__Id_Ub__4316F928" FromRole="Tb_Medico" ToRole="Tb_Ubicacion" />
+          <NavigationProperty Name="Tb_Usuario" Relationship="Self.FK__Tb_Medico__Login__4222D4EF" FromRole="Tb_Medico" ToRole="Tb_Usuario" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="codPaciente" />
+          </Key>
+          <Property Name="codPaciente" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nomPaciente" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apePaciente" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dniPaciente" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="direcPaciente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tipoSangre" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fotoPaciente" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="emailPaciente" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="fechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="numTelefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="tipoCliente" Type="Int32" />
+          <Property Name="codEmpresa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tb_Consultas" Relationship="Self.FK__Tb_Consul__codPa__76619304" FromRole="Tb_Paciente" ToRole="Tb_Consultas" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK__Tb_Pacien__codEm__398D8EEE" FromRole="Tb_Paciente" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Paciente1" Relationship="Self.FK__Tb_Pacien__codPa__3E52440B" FromRole="Tb_Paciente" ToRole="Tb_Paciente1" />
+          <NavigationProperty Name="Tb_Paciente2" Relationship="Self.FK__Tb_Pacien__codPa__3E52440B" FromRole="Tb_Paciente1" ToRole="Tb_Paciente" />
+          <NavigationProperty Name="Tb_Ubicacion" Relationship="Self.FK__Tb_Pacien__Id_Ub__3A81B327" FromRole="Tb_Paciente" ToRole="Tb_Ubicacion" />
+          <NavigationProperty Name="Tb_Resultados" Relationship="Self.FK_Tb_Result_codPa" FromRole="Tb_Paciente" ToRole="Tb_Resultados" />
+        </EntityType>
+        <EntityType Name="Tb_Resultados">
+          <Key>
+            <PropertyRef Name="codResultado" />
+          </Key>
+          <Property Name="codResultado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="altura" Type="Double" />
+          <Property Name="sangre" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="orina" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="ekg" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="spirometria" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="psicologia" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="rayosX" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="audicion" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="vista" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="codAnalisis" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="codEvaluacion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="codEnfermedad" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="recomendaciones" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="codPaciente" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Analisis" Relationship="Self.FK__Tb_Result__codAn__3B75D760" FromRole="Tb_Resultados" ToRole="Tb_Analisis" />
+          <NavigationProperty Name="Tb_Enfermedad" Relationship="Self.FK__Tb_Result__codEn__3D5E1FD2" FromRole="Tb_Resultados" ToRole="Tb_Enfermedad" />
+          <NavigationProperty Name="Tb_Evaluacion" Relationship="Self.FK__Tb_Result__codEv__3C69FB99" FromRole="Tb_Resultados" ToRole="Tb_Evaluacion" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK_Tb_Result_codPa" FromRole="Tb_Resultados" ToRole="Tb_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Ubicacion">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdProv" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdDist" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK__Tb_Empres__Id_Ub__440B1D61" FromRole="Tb_Ubicacion" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Medico__Id_Ub__4316F928" FromRole="Tb_Ubicacion" ToRole="Tb_Medico" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK__Tb_Pacien__Id_Ub__3A81B327" FromRole="Tb_Ubicacion" ToRole="Tb_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Niv_Usuario" Type="Int32" />
+          <Property Name="Est_Usuario" Type="Int32" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Medico" Relationship="Self.FK__Tb_Medico__Login__4222D4EF" FromRole="Tb_Usuario" ToRole="Tb_Medico" />
+        </EntityType>
+        <Association Name="FK__Tb_Result__codAn__3B75D760">
+          <End Role="Tb_Analisis" Type="Self.Tb_Analisis" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Analisis">
+              <PropertyRef Name="codAnalisis" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Audito__codMe__46E78A0C">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="0..1" />
+          <End Role="Tb_Auditor" Type="Self.Tb_Auditor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Auditor">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Evalua__codAu__45F365D3">
+          <End Role="Tb_Auditor" Type="Self.Tb_Auditor" Multiplicity="1" />
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Auditor">
+              <PropertyRef Name="codAuditor" />
+            </Principal>
+            <Dependent Role="Tb_Evaluacion">
+              <PropertyRef Name="codAuditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__codMe__7755B73D">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="0..1" />
+          <End Role="Tb_Consultas" Type="Self.Tb_Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Consultas">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__codPa__76619304">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Consultas" Type="Self.Tb_Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Consultas">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Empres__Id_Ub__440B1D61">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="0..1" />
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empresa">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__codEm__398D8EEE">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="codEmpresa" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="codEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Result__codEn__3D5E1FD2">
+          <End Role="Tb_Enfermedad" Type="Self.Tb_Enfermedad" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Enfermedad">
+              <PropertyRef Name="codEnfermedad" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codEnfermedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__codEs__412EB0B6">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="0..1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Especialidad">
+              <PropertyRef Name="codEspecialidad" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="codEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Evalua__codMe__44FF419A">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="1" />
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Evaluacion">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Result__codEv__3C69FB99">
+          <End Role="Tb_Evaluacion" Type="Self.Tb_Evaluacion" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Evaluacion">
+              <PropertyRef Name="codEvaluacion" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codEvaluacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico">
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="1" />
+          <End Role="Tb_Horario" Type="Self.Tb_Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medico">
+              <PropertyRef Name="codMedico" />
+            </Principal>
+            <Dependent Role="Tb_Horario">
+              <PropertyRef Name="codMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__Id_Ub__4316F928">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Medico__Login__4222D4EF">
+          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="0..1" />
+          <End Role="Tb_Medico" Type="Self.Tb_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Usuario">
+              <PropertyRef Name="Login_Usuario" />
+            </Principal>
+            <Dependent Role="Tb_Medico">
+              <PropertyRef Name="Login_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__codPa__3E52440B">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="1" />
+          <End Role="Tb_Paciente1" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Paciente1">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Pacien__Id_Ub__3A81B327">
+          <End Role="Tb_Ubicacion" Type="Self.Tb_Ubicacion" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubicacion">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Result_codPa">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Resultados" Type="Self.Tb_Resultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="codPaciente" />
+            </Principal>
+            <Dependent Role="Tb_Resultados">
+              <PropertyRef Name="codPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDCheckSaludEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Analisis" EntityType="Self.Tb_Analisis" />
+          <EntitySet Name="Tb_Auditor" EntityType="Self.Tb_Auditor" />
+          <EntitySet Name="Tb_Consultas" EntityType="Self.Tb_Consultas" />
+          <EntitySet Name="Tb_Empresa" EntityType="Self.Tb_Empresa" />
+          <EntitySet Name="Tb_Enfermedad" EntityType="Self.Tb_Enfermedad" />
+          <EntitySet Name="Tb_Especialidad" EntityType="Self.Tb_Especialidad" />
+          <EntitySet Name="Tb_Evaluacion" EntityType="Self.Tb_Evaluacion" />
+          <EntitySet Name="Tb_Horario" EntityType="Self.Tb_Horario" />
+          <EntitySet Name="Tb_Medico" EntityType="Self.Tb_Medico" />
+          <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" />
+          <EntitySet Name="Tb_Resultados" EntityType="Self.Tb_Resultados" />
+          <EntitySet Name="Tb_Ubicacion" EntityType="Self.Tb_Ubicacion" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
+          <AssociationSet Name="FK__Tb_Result__codAn__3B75D760" Association="Self.FK__Tb_Result__codAn__3B75D760">
+            <End Role="Tb_Analisis" EntitySet="Tb_Analisis" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Audito__codMe__46E78A0C" Association="Self.FK__Tb_Audito__codMe__46E78A0C">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Auditor" EntitySet="Tb_Auditor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Evalua__codAu__45F365D3" Association="Self.FK__Tb_Evalua__codAu__45F365D3">
+            <End Role="Tb_Auditor" EntitySet="Tb_Auditor" />
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__codMe__7755B73D" Association="Self.FK__Tb_Consul__codMe__7755B73D">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Consultas" EntitySet="Tb_Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__codPa__76619304" Association="Self.FK__Tb_Consul__codPa__76619304">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Consultas" EntitySet="Tb_Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Empres__Id_Ub__440B1D61" Association="Self.FK__Tb_Empres__Id_Ub__440B1D61">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__codEm__398D8EEE" Association="Self.FK__Tb_Pacien__codEm__398D8EEE">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Result__codEn__3D5E1FD2" Association="Self.FK__Tb_Result__codEn__3D5E1FD2">
+            <End Role="Tb_Enfermedad" EntitySet="Tb_Enfermedad" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__codEs__412EB0B6" Association="Self.FK__Tb_Medico__codEs__412EB0B6">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Evalua__codMe__44FF419A" Association="Self.FK__Tb_Evalua__codMe__44FF419A">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Result__codEv__3C69FB99" Association="Self.FK__Tb_Result__codEv__3C69FB99">
+            <End Role="Tb_Evaluacion" EntitySet="Tb_Evaluacion" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico" Association="Self.FK_Horario_Medico">
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+            <End Role="Tb_Horario" EntitySet="Tb_Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__Id_Ub__4316F928" Association="Self.FK__Tb_Medico__Id_Ub__4316F928">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Medico__Login__4222D4EF" Association="Self.FK__Tb_Medico__Login__4222D4EF">
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+            <End Role="Tb_Medico" EntitySet="Tb_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__codPa__3E52440B" Association="Self.FK__Tb_Pacien__codPa__3E52440B">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Paciente1" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Pacien__Id_Ub__3A81B327" Association="Self.FK__Tb_Pacien__Id_Ub__3A81B327">
+            <End Role="Tb_Ubicacion" EntitySet="Tb_Ubicacion" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Result_codPa" Association="Self.FK_Tb_Result_codPa">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Resultados" EntitySet="Tb_Resultados" />
+          </AssociationSet>
+          <FunctionImport Name="sp_ActualizarConsultasPendientes" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CancelarConsulta">
+            <Parameter Name="codConsulta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ConsultaEspecialidadFechas" ReturnType="Collection(CheckSalud_DBModel.sp_ConsultaEspecialidadFechas_Result)">
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ConsultaMedicosEspecialidad" ReturnType="Collection(CheckSalud_DBModel.sp_ConsultaMedicosEspecialidad_Result)">
+            <Parameter Name="codEspecialidad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ConsultasAsignadasMedico" ReturnType="Collection(CheckSalud_DBModel.sp_ConsultasAsignadasMedico_Result)">
+            <Parameter Name="codMedico" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetConsultasByDate" ReturnType="Collection(CheckSalud_DBModel.sp_GetConsultasByDate_Result)">
+            <Parameter Name="FechaConsulta" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetConsultasByDate1" ReturnType="Collection(CheckSalud_DBModel.sp_GetConsultasByDate1_Result)">
+            <Parameter Name="FechaConsulta" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CheckSalud_DBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CheckSalud_DBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarConsultasPaciente" ReturnType="Collection(CheckSalud_DBModel.sp_ListarConsultasPaciente_Result)">
+            <Parameter Name="dniPaciente" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarEspecialidad" ReturnType="Collection(CheckSalud_DBModel.sp_ListarEspecialidad_Result)" />
+          <FunctionImport Name="sp_ListarMedicosEspecialidad" ReturnType="Collection(CheckSalud_DBModel.sp_ListarMedicosEspecialidad_Result)" />
+          <FunctionImport Name="sp_ProgramarConsulta">
+            <Parameter Name="codPaciente" Mode="In" Type="String" />
+            <Parameter Name="codMedico" Mode="In" Type="String" />
+            <Parameter Name="motivoConsulta" Mode="In" Type="String" />
+            <Parameter Name="fechaConsulta" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarResultadosConsulta">
+            <Parameter Name="codConsulta" Mode="In" Type="String" />
+            <Parameter Name="resultados" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ResultadosAnalisisPaciente" ReturnType="Collection(CheckSalud_DBModel.sp_ResultadosAnalisisPaciente_Result)">
+            <Parameter Name="codPaciente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_VerConsultasPendientes" ReturnType="Collection(CheckSalud_DBModel.sp_VerConsultasPendientes_Result)" />
+          <FunctionImport Name="usp_ActualizarAnalisis">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+            <Parameter Name="vDes" Mode="In" Type="String" />
+            <Parameter Name="vCos" Mode="In" Type="Decimal" />
+            <Parameter Name="vEst" Mode="In" Type="Int32" />
+            <Parameter Name="vUsu_Ult_Mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEmpresa">
+            <Parameter Name="VcodEmpresa" Mode="In" Type="String" />
+            <Parameter Name="VRaz_soc_emp" Mode="In" Type="String" />
+            <Parameter Name="VDir_emp" Mode="In" Type="String" />
+            <Parameter Name="VTel_emp" Mode="In" Type="String" />
+            <Parameter Name="VRuc_emp" Mode="In" Type="String" />
+            <Parameter Name="VRep_emp" Mode="In" Type="String" />
+            <Parameter Name="VId_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="Vestado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEstadoPaciente">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+            <Parameter Name="vNom" Mode="In" Type="String" />
+            <Parameter Name="vApe" Mode="In" Type="String" />
+            <Parameter Name="vFNac" Mode="In" Type="DateTime" />
+            <Parameter Name="vDni" Mode="In" Type="String" />
+            <Parameter Name="vSexo" Mode="In" Type="Int32" />
+            <Parameter Name="vDir" Mode="In" Type="String" />
+            <Parameter Name="vSang" Mode="In" Type="String" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vFIngr" Mode="In" Type="DateTime" />
+            <Parameter Name="vTelef" Mode="In" Type="String" />
+            <Parameter Name="vEsta" Mode="In" Type="Int32" />
+            <Parameter Name="vTipo" Mode="In" Type="Int32" />
+            <Parameter Name="vCEmpr" Mode="In" Type="String" />
+            <Parameter Name="vUsu_Ult_Mod" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarMedico">
+            <Parameter Name="vCodMedico" Mode="In" Type="String" />
+            <Parameter Name="dniMedic" Mode="In" Type="String" />
+            <Parameter Name="nomMedico" Mode="In" Type="String" />
+            <Parameter Name="apeMedico" Mode="In" Type="String" />
+            <Parameter Name="numColegiatura" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="emailMedico" Mode="In" Type="String" />
+            <Parameter Name="direcMedico" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+            <Parameter Name="codEspecialidad" Mode="In" Type="String" />
+            <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Usu_Ult_Mod" Mode="In" Type="String" />
+            <Parameter Name="Id_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarResultado">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+            <Parameter Name="vPeso" Mode="In" Type="Decimal" />
+            <Parameter Name="vAltura" Mode="In" Type="Decimal" />
+            <Parameter Name="vSangre" Mode="In" Type="String" />
+            <Parameter Name="vOrina" Mode="In" Type="String" />
+            <Parameter Name="vEkg" Mode="In" Type="String" />
+            <Parameter Name="vSpiro" Mode="In" Type="String" />
+            <Parameter Name="vPsico" Mode="In" Type="String" />
+            <Parameter Name="vXray" Mode="In" Type="String" />
+            <Parameter Name="vAudi" Mode="In" Type="String" />
+            <Parameter Name="vVisi" Mode="In" Type="String" />
+            <Parameter Name="vCodEnfe" Mode="In" Type="String" />
+            <Parameter Name="vRecom" Mode="In" Type="String" />
+            <Parameter Name="vCodPac" Mode="In" Type="String" />
+            <Parameter Name="vUsu_Ult_Mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarAnalisis" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarAnalisis_Result)">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEmpresa" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarEmpresa_Result)">
+            <Parameter Name="VcodEmpresa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarMedico" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarMedico_Result)">
+            <Parameter Name="vCodMedico" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarPaciente" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarPaciente_Result)">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarResultado" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarResultado_Result)">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarUsuario" ReturnType="Collection(CheckSalud_DBModel.usp_ConsultarUsuario_Result)">
+            <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarAnalisis">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEmpresa">
+            <Parameter Name="VcodEmpresa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarMedico">
+            <Parameter Name="VcodMedico" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarPaciente">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarResultado">
+            <Parameter Name="vCod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarAnalisis">
+            <Parameter Name="vDes" Mode="In" Type="String" />
+            <Parameter Name="vCos" Mode="In" Type="Decimal" />
+            <Parameter Name="vEst" Mode="In" Type="Int32" />
+            <Parameter Name="vUsu_Reg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEmpresa">
+            <Parameter Name="VRaz_soc_empl" Mode="In" Type="String" />
+            <Parameter Name="VDir_emp" Mode="In" Type="String" />
+            <Parameter Name="VTel_emp" Mode="In" Type="String" />
+            <Parameter Name="VRuc_emp" Mode="In" Type="String" />
+            <Parameter Name="VRep_emp" Mode="In" Type="String" />
+            <Parameter Name="VId_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="Vestado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEstadoPaciente">
+            <Parameter Name="vNom" Mode="In" Type="String" />
+            <Parameter Name="vApe" Mode="In" Type="String" />
+            <Parameter Name="vFNac" Mode="In" Type="DateTime" />
+            <Parameter Name="vDni" Mode="In" Type="String" />
+            <Parameter Name="vSexo" Mode="In" Type="Int32" />
+            <Parameter Name="vDir" Mode="In" Type="String" />
+            <Parameter Name="vSang" Mode="In" Type="String" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vFIngr" Mode="In" Type="DateTime" />
+            <Parameter Name="vTelef" Mode="In" Type="String" />
+            <Parameter Name="vEsta" Mode="In" Type="Int32" />
+            <Parameter Name="vTipo" Mode="In" Type="Int32" />
+            <Parameter Name="vCEmpr" Mode="In" Type="String" />
+            <Parameter Name="vUsu_Reg" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEvaluacion">
+            <Parameter Name="vFEva" Mode="In" Type="DateTime" />
+            <Parameter Name="vMed" Mode="In" Type="String" />
+            <Parameter Name="vAud" Mode="In" Type="String" />
+            <Parameter Name="vEst" Mode="In" Type="Int32" />
+            <Parameter Name="vUsu_Reg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarMedico">
+            <Parameter Name="dniMedic" Mode="In" Type="String" />
+            <Parameter Name="nomMedico" Mode="In" Type="String" />
+            <Parameter Name="apeMedico" Mode="In" Type="String" />
+            <Parameter Name="numColegiatura" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="emailMedico" Mode="In" Type="String" />
+            <Parameter Name="direcMedico" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+            <Parameter Name="codEspecialidad" Mode="In" Type="String" />
+            <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Usu_Registro" Mode="In" Type="String" />
+            <Parameter Name="Id_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="fec_ingreso" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarResultado">
+            <Parameter Name="vPeso" Mode="In" Type="Decimal" />
+            <Parameter Name="vAltura" Mode="In" Type="Decimal" />
+            <Parameter Name="vSangre" Mode="In" Type="String" />
+            <Parameter Name="vOrina" Mode="In" Type="String" />
+            <Parameter Name="vEkg" Mode="In" Type="String" />
+            <Parameter Name="vSpiro" Mode="In" Type="String" />
+            <Parameter Name="vPsico" Mode="In" Type="String" />
+            <Parameter Name="vXray" Mode="In" Type="String" />
+            <Parameter Name="vAudi" Mode="In" Type="String" />
+            <Parameter Name="vVisi" Mode="In" Type="String" />
+            <Parameter Name="vCodAnal" Mode="In" Type="String" />
+            <Parameter Name="vCodEva" Mode="In" Type="String" />
+            <Parameter Name="vCodEnfe" Mode="In" Type="String" />
+            <Parameter Name="vRecom" Mode="In" Type="String" />
+            <Parameter Name="vCodPac" Mode="In" Type="String" />
+            <Parameter Name="vUsu_Registro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarUsuario">
+            <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Pass_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Usu_Registro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarAnalisis" ReturnType="Collection(CheckSalud_DBModel.usp_ListarAnalisis_Result)" />
+          <FunctionImport Name="usp_ListarAuditor" ReturnType="Collection(CheckSalud_DBModel.usp_ListarAuditor_Result)" />
+          <FunctionImport Name="usp_ListarEmpresa" ReturnType="Collection(CheckSalud_DBModel.usp_ListarEmpresa_Result)" />
+          <FunctionImport Name="usp_ListarEnfermedad" ReturnType="Collection(CheckSalud_DBModel.usp_ListarEnfermedad_Result)" />
+          <FunctionImport Name="usp_ListarEspecialidad" ReturnType="Collection(CheckSalud_DBModel.usp_ListarEspecialidad_Result)" />
+          <FunctionImport Name="usp_ListarMedico" ReturnType="Collection(CheckSalud_DBModel.usp_ListarMedico_Result)" />
+          <FunctionImport Name="usp_ListarMedico2" ReturnType="Collection(CheckSalud_DBModel.usp_ListarMedico2_Result)" />
+          <FunctionImport Name="usp_ListarPaciente" ReturnType="Collection(CheckSalud_DBModel.usp_ListarPaciente_Result)" />
+          <FunctionImport Name="usp_ListarPaciente2" ReturnType="Collection(CheckSalud_DBModel.usp_ListarPaciente2_Result)" />
+          <FunctionImport Name="usp_ListarResultados" ReturnType="Collection(CheckSalud_DBModel.usp_ListarResultados_Result)" />
+          <FunctionImport Name="usp_ListarUbicacion" ReturnType="Collection(CheckSalud_DBModel.usp_ListarUbicacion_Result)" />
+          <FunctionImport Name="usp_ListarUltAnalisis" ReturnType="Collection(CheckSalud_DBModel.usp_ListarUltAnalisis_Result)" />
+          <FunctionImport Name="usp_ListarUltEvaluacion" ReturnType="Collection(CheckSalud_DBModel.usp_ListarUltEvaluacion_Result)" />
+        </EntityContainer>
+        <ComplexType Name="sp_ConsultaEspecialidadFechas_Result">
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+          <Property Type="Int32" Name="TotalConsultas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ConsultaMedicosEspecialidad_Result">
+          <Property Type="String" Name="codMedico" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="codEspecialidad" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="NombreMedico" Nullable="false" MaxLength="41" />
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="sp_ConsultasAsignadasMedico_Result">
+          <Property Type="String" Name="codConsulta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="codMedico" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="codPaciente" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="NombreMedico" Nullable="false" MaxLength="42" />
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="emailMedico" Nullable="true" MaxLength="320" />
+          <Property Type="String" Name="NombrePaciente" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="FechaConsulta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="motivoConsulta" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="resultados" Nullable="true" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_GetConsultasByDate_Result">
+          <Property Type="String" Name="codConsulta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="CodPaciente" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="CodMedico" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fechaConsulta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Paciente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="42" />
+          <Property Type="String" Name="motivoConsulta" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_GetConsultasByDate1_Result">
+          <Property Type="String" Name="codConsulta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="CodPaciente" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="CodMedico" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fechaConsulta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Paciente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="42" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarConsultasPaciente_Result">
+          <Property Type="String" Name="codConsulta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="codPaciente" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="codMedico" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NombrePaciente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NombreMedico" Nullable="false" MaxLength="42" />
+          <Property Type="DateTime" Name="FechaConsulta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="motivoConsulta" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="resultados" Nullable="true" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarEspecialidad_Result">
+          <Property Type="String" Name="codEspecialidad" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarMedicosEspecialidad_Result">
+          <Property Type="String" Name="codMedico" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="codEspecialidad" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="NombreMedico" Nullable="false" MaxLength="41" />
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="sp_ResultadosAnalisisPaciente_Result">
+          <Property Type="String" Name="codResultado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="codAnalisis" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="descAnalisis" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="NombrePaciente" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="FechaResultado" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="peso" Nullable="true" />
+          <Property Type="Double" Name="altura" Nullable="true" />
+          <Property Type="String" Name="sangre" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="orina" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="vista" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="spirometria" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="rayosX" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="sp_VerConsultasPendientes_Result">
+          <Property Type="String" Name="codConsulta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="codPaciente" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="codMedico" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Paciente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="42" />
+          <Property Type="String" Name="motivoConsulta" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fechaConsulta" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarAnalisis_Result">
+          <Property Type="String" Name="codAnalisis" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="NombrePaciente" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="ApellidoPaciente" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="Lugar_de_trabajo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TipoAnális" Nullable="true" MaxLength="99" />
+          <Property Type="Decimal" Name="CostoAnálisis" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaEvaluacion" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarEmpresa_Result">
+          <Property Type="String" Name="codEmpresa" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Raz_soc_emp" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Ruc_emp" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="Años_servicios" Nullable="true" />
+          <Property Type="String" Name="Estado_actual" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Trabajadores_Evaluados" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarMedico_Result">
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="colegiatura" Nullable="false" MaxLength="9" />
+          <Property Type="DateTime" Name="fecha_de_nacimiento" Nullable="false" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="320" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="99" />
+          <Property Type="Int32" Name="estado" Nullable="false" />
+          <Property Type="String" Name="especialidad" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="login" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="DateTime" Name="fecha_de_ingreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarPaciente_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="99" />
+          <Property Type="DateTime" Name="Fecha_de_Nacimiento" Nullable="false" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="Sexo" Nullable="false" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="320" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="Tipo_de_sangre" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Tipo_cliente" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_Ingreso" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usuario_registro" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarResultado_Result">
+          <Property Type="String" Name="codResultado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="codPaciente" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="NomApePaciente" Nullable="false" MaxLength="199" />
+          <Property Type="String" Name="dniPaciente" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="codAnalisis" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="codEvaluacion" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="codEnfermedad" Nullable="true" MaxLength="5" />
+          <Property Type="Double" Name="peso" Nullable="true" />
+          <Property Type="Double" Name="altura" Nullable="true" />
+          <Property Type="String" Name="sangre" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="orina" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="ekg" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="spirometria" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="psicologia" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="rayosX" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="audicion" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="vista" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="recomendaciones" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Usu_Registro" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarUsuario_Result">
+          <Property Type="String" Name="Login_Usuario" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Pass_Usuario" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Niv_Usuario" Nullable="true" />
+          <Property Type="Int32" Name="Est_Usuario" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_Registro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Registro" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarAnalisis_Result">
+          <Property Type="String" Name="codAnalisis" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="NombrePaciente" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="ApellidoPaciente" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="Lugar_de_trabajo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TipoAnális" Nullable="true" MaxLength="99" />
+          <Property Type="Decimal" Name="CostoAnálisis" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaEvaluacion" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarAuditor_Result">
+          <Property Type="String" Name="codAuditor" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="Auditor" Nullable="false" MaxLength="41" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEmpresa_Result">
+          <Property Type="String" Name="codEmpresa" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Raz_soc_emp" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Ruc_emp" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="Años_servicios" Nullable="true" />
+          <Property Type="String" Name="Estado_actual" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Trabajadores_Evaluados" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEnfermedad_Result">
+          <Property Type="String" Name="codEnfermedad" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="descEnfermedad" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEspecialidad_Result">
+          <Property Type="String" Name="codEspecialidad" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="descEspecialidad" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarMedico_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Numero_de_Colegiatura" Nullable="false" MaxLength="9" />
+          <Property Type="DateTime" Name="Fecha_de_Nacimiento" Nullable="false" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Especialidad" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Login_de_Usuario" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="99" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarMedico2_Result">
+          <Property Type="String" Name="codMedico" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="41" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPaciente_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="99" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="99" />
+          <Property Type="DateTime" Name="Fecha_de_Nacimiento" Nullable="false" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="320" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="Tipo_de_sangre" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Tipo_cliente" Nullable="true" MaxLength="14" />
+          <Property Type="DateTime" Name="Fecha_Ingreso" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usuario_registro" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPaciente2_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Paciente" Nullable="false" MaxLength="199" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarResultados_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Paciente" Nullable="false" MaxLength="199" />
+          <Property Type="String" Name="Fecha_de_nacimiento" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Lugar_de_trabajo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipo_de_examen" Nullable="true" MaxLength="99" />
+          <Property Type="DateTime" Name="Fecha_de_evaluacion" Nullable="true" />
+          <Property Type="Double" Name="Peso__KG_" Nullable="true" />
+          <Property Type="Double" Name="Altura__Mts_" Nullable="true" />
+          <Property Type="String" Name="Examen_de_sangre" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Examen_de_orina" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Electrocardiograma" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Espirometria" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Examen_psicologico" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Rayos_X" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Examen_de_audicion" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Examen_de_vista" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Recomendaciones" Nullable="true" MaxLength="99" />
+          <Property Type="String" Name="Medico_Evaluador" Nullable="false" MaxLength="41" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarUbicacion_Result">
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarUltAnalisis_Result">
+          <Property Type="String" Name="codAnalisis" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="descAnalisis" Nullable="true" MaxLength="99" />
+          <Property Type="Decimal" Name="costo" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="estado" Nullable="false" />
+          <Property Type="DateTime" Name="Fec_reg" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Registro" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Fec_Ult_Mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Ult_Mod" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarUltEvaluacion_Result">
+          <Property Type="String" Name="codEvaluacion" Nullable="false" MaxLength="5" />
+          <Property Type="DateTime" Name="Fec_Eva" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="String" Name="codMedico" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="codAuditor" Nullable="false" MaxLength="3" />
+          <Property Type="DateTime" Name="Fec_reg" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Registro" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Fec_Ult_Mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Ult_Mod" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CheckSalud_DBModelStoreContainer" CdmEntityContainer="BDCheckSaludEntities">
+          <EntitySetMapping Name="Tb_Analisis">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Analisis">
+              <MappingFragment StoreEntitySet="Tb_Analisis">
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="descAnalisis" ColumnName="descAnalisis" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Auditor">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Auditor">
+              <MappingFragment StoreEntitySet="Tb_Auditor">
+                <ScalarProperty Name="codAuditor" ColumnName="codAuditor" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Consultas">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Consultas">
+              <MappingFragment StoreEntitySet="Tb_Consultas">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+                <ScalarProperty Name="fechaConsulta" ColumnName="fechaConsulta" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="resultados" ColumnName="resultados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Empresa">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Empresa">
+              <MappingFragment StoreEntitySet="Tb_Empresa">
+                <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+                <ScalarProperty Name="Raz_soc_emp" ColumnName="Raz_soc_emp" />
+                <ScalarProperty Name="Dir_emp" ColumnName="Dir_emp" />
+                <ScalarProperty Name="Tel_emp" ColumnName="Tel_emp" />
+                <ScalarProperty Name="Ruc_emp" ColumnName="Ruc_emp" />
+                <ScalarProperty Name="Rep_emp" ColumnName="Rep_emp" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="fec_Ingreso" ColumnName="fec_Ingreso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Enfermedad">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Enfermedad">
+              <MappingFragment StoreEntitySet="Tb_Enfermedad">
+                <ScalarProperty Name="codEnfermedad" ColumnName="codEnfermedad" />
+                <ScalarProperty Name="descEnfermedad" ColumnName="descEnfermedad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Especialidad">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Especialidad">
+              <MappingFragment StoreEntitySet="Tb_Especialidad">
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="descEspecialidad" ColumnName="descEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Evaluacion">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Evaluacion">
+              <MappingFragment StoreEntitySet="Tb_Evaluacion">
+                <ScalarProperty Name="codEvaluacion" ColumnName="codEvaluacion" />
+                <ScalarProperty Name="Fec_Eva" ColumnName="Fec_Eva" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="codAuditor" ColumnName="codAuditor" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Horario">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Horario">
+              <MappingFragment StoreEntitySet="Tb_Horario">
+                <ScalarProperty Name="codHorario" ColumnName="codHorario" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+                <ScalarProperty Name="horaFin" ColumnName="horaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Medico">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Medico">
+              <MappingFragment StoreEntitySet="Tb_Medico">
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="dniMedic" ColumnName="dniMedic" />
+                <ScalarProperty Name="nomMedico" ColumnName="nomMedico" />
+                <ScalarProperty Name="apeMedico" ColumnName="apeMedico" />
+                <ScalarProperty Name="numColegiatura" ColumnName="numColegiatura" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="emailMedico" ColumnName="emailMedico" />
+                <ScalarProperty Name="fotoMedico" ColumnName="fotoMedico" />
+                <ScalarProperty Name="direcMedico" ColumnName="direcMedico" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Fec_Reg" ColumnName="Fec_Reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fech_Ult_Mod" ColumnName="Fech_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Paciente">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Paciente">
+              <MappingFragment StoreEntitySet="Tb_Paciente">
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="nomPaciente" ColumnName="nomPaciente" />
+                <ScalarProperty Name="apePaciente" ColumnName="apePaciente" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="dniPaciente" ColumnName="dniPaciente" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direcPaciente" ColumnName="direcPaciente" />
+                <ScalarProperty Name="tipoSangre" ColumnName="tipoSangre" />
+                <ScalarProperty Name="fotoPaciente" ColumnName="fotoPaciente" />
+                <ScalarProperty Name="emailPaciente" ColumnName="emailPaciente" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="numTelefono" ColumnName="numTelefono" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tipoCliente" ColumnName="tipoCliente" />
+                <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Resultados">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Resultados">
+              <MappingFragment StoreEntitySet="Tb_Resultados">
+                <ScalarProperty Name="codResultado" ColumnName="codResultado" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="sangre" ColumnName="sangre" />
+                <ScalarProperty Name="orina" ColumnName="orina" />
+                <ScalarProperty Name="ekg" ColumnName="ekg" />
+                <ScalarProperty Name="spirometria" ColumnName="spirometria" />
+                <ScalarProperty Name="psicologia" ColumnName="psicologia" />
+                <ScalarProperty Name="rayosX" ColumnName="rayosX" />
+                <ScalarProperty Name="audicion" ColumnName="audicion" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="codEvaluacion" ColumnName="codEvaluacion" />
+                <ScalarProperty Name="codEnfermedad" ColumnName="codEnfermedad" />
+                <ScalarProperty Name="recomendaciones" ColumnName="recomendaciones" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Ubicacion">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Ubicacion">
+              <MappingFragment StoreEntitySet="Tb_Ubicacion">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Usuario">
+            <EntityTypeMapping TypeName="CheckSalud_DBModel.Tb_Usuario">
+              <MappingFragment StoreEntitySet="Tb_Usuario">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ActualizarConsultasPendientes" FunctionName="CheckSalud_DBModel.Store.sp_ActualizarConsultasPendientes" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CheckSalud_DBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_CancelarConsulta" FunctionName="CheckSalud_DBModel.Store.sp_CancelarConsulta" />
+          <FunctionImportMapping FunctionImportName="sp_ConsultaEspecialidadFechas" FunctionName="CheckSalud_DBModel.Store.sp_ConsultaEspecialidadFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ConsultaEspecialidadFechas_Result">
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="TotalConsultas" ColumnName="TotalConsultas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ConsultaMedicosEspecialidad" FunctionName="CheckSalud_DBModel.Store.sp_ConsultaMedicosEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ConsultaMedicosEspecialidad_Result">
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="NombreMedico" ColumnName="NombreMedico" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ConsultasAsignadasMedico" FunctionName="CheckSalud_DBModel.Store.sp_ConsultasAsignadasMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ConsultasAsignadasMedico_Result">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="NombreMedico" ColumnName="NombreMedico" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="emailMedico" ColumnName="emailMedico" />
+                <ScalarProperty Name="NombrePaciente" ColumnName="NombrePaciente" />
+                <ScalarProperty Name="FechaConsulta" ColumnName="FechaConsulta" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+                <ScalarProperty Name="resultados" ColumnName="resultados" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CheckSalud_DBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CheckSalud_DBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_GetConsultasByDate" FunctionName="CheckSalud_DBModel.Store.sp_GetConsultasByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_GetConsultasByDate_Result">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="CodPaciente" ColumnName="CodPaciente" />
+                <ScalarProperty Name="CodMedico" ColumnName="CodMedico" />
+                <ScalarProperty Name="fechaConsulta" ColumnName="fechaConsulta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetConsultasByDate1" FunctionName="CheckSalud_DBModel.Store.sp_GetConsultasByDate1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_GetConsultasByDate1_Result">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="CodPaciente" ColumnName="CodPaciente" />
+                <ScalarProperty Name="CodMedico" ColumnName="CodMedico" />
+                <ScalarProperty Name="fechaConsulta" ColumnName="fechaConsulta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CheckSalud_DBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CheckSalud_DBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarConsultasPaciente" FunctionName="CheckSalud_DBModel.Store.sp_ListarConsultasPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ListarConsultasPaciente_Result">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="NombrePaciente" ColumnName="NombrePaciente" />
+                <ScalarProperty Name="NombreMedico" ColumnName="NombreMedico" />
+                <ScalarProperty Name="FechaConsulta" ColumnName="FechaConsulta" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+                <ScalarProperty Name="resultados" ColumnName="resultados" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarEspecialidad" FunctionName="CheckSalud_DBModel.Store.sp_ListarEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ListarEspecialidad_Result">
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarMedicosEspecialidad" FunctionName="CheckSalud_DBModel.Store.sp_ListarMedicosEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ListarMedicosEspecialidad_Result">
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="NombreMedico" ColumnName="NombreMedico" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ProgramarConsulta" FunctionName="CheckSalud_DBModel.Store.sp_ProgramarConsulta" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarResultadosConsulta" FunctionName="CheckSalud_DBModel.Store.sp_RegistrarResultadosConsulta" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CheckSalud_DBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_ResultadosAnalisisPaciente" FunctionName="CheckSalud_DBModel.Store.sp_ResultadosAnalisisPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_ResultadosAnalisisPaciente_Result">
+                <ScalarProperty Name="codResultado" ColumnName="codResultado" />
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="descAnalisis" ColumnName="descAnalisis" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="NombrePaciente" ColumnName="NombrePaciente" />
+                <ScalarProperty Name="FechaResultado" ColumnName="FechaResultado" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="sangre" ColumnName="sangre" />
+                <ScalarProperty Name="orina" ColumnName="orina" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="spirometria" ColumnName="spirometria" />
+                <ScalarProperty Name="rayosX" ColumnName="rayosX" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CheckSalud_DBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_VerConsultasPendientes" FunctionName="CheckSalud_DBModel.Store.sp_VerConsultasPendientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.sp_VerConsultasPendientes_Result">
+                <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+                <ScalarProperty Name="fechaConsulta" ColumnName="fechaConsulta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_ActualizarAnalisis" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpresa" FunctionName="CheckSalud_DBModel.Store.usp_ActualizarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEstadoPaciente" FunctionName="CheckSalud_DBModel.Store.usp_ActualizarEstadoPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarMedico" FunctionName="CheckSalud_DBModel.Store.usp_ActualizarMedico" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarResultado" FunctionName="CheckSalud_DBModel.Store.usp_ActualizarResultado" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarAnalisis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarAnalisis_Result">
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="NombrePaciente" ColumnName="NombrePaciente" />
+                <ScalarProperty Name="ApellidoPaciente" ColumnName="ApellidoPaciente" />
+                <ScalarProperty Name="Lugar_de_trabajo" ColumnName="Lugar_de_trabajo" />
+                <ScalarProperty Name="TipoAnális" ColumnName="TipoAnális" />
+                <ScalarProperty Name="CostoAnálisis" ColumnName="CostoAnálisis" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEmpresa" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarEmpresa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarEmpresa_Result">
+                <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+                <ScalarProperty Name="Raz_soc_emp" ColumnName="Raz_soc_emp" />
+                <ScalarProperty Name="Ruc_emp" ColumnName="Ruc_emp" />
+                <ScalarProperty Name="Años_servicios" ColumnName="Años_servicios" />
+                <ScalarProperty Name="Estado_actual" ColumnName="Estado_actual" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Trabajadores_Evaluados" ColumnName="Trabajadores_Evaluados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarMedico" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarMedico_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="colegiatura" ColumnName="colegiatura" />
+                <ScalarProperty Name="fecha_de_nacimiento" ColumnName="fecha de nacimiento" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="ubigeo" ColumnName="ubigeo" />
+                <ScalarProperty Name="fecha_de_ingreso" ColumnName="fecha de ingreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarPaciente" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarPaciente_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Fecha_de_Nacimiento" ColumnName="Fecha de Nacimiento" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ubigeo" ColumnName="Ubigeo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Tipo_de_sangre" ColumnName="Tipo de sangre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo cliente" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha Ingreso" />
+                <ScalarProperty Name="Usuario_registro" ColumnName="Usuario registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarResultado" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarResultado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarResultado_Result">
+                <ScalarProperty Name="codResultado" ColumnName="codResultado" />
+                <ScalarProperty Name="codPaciente" ColumnName="codPaciente" />
+                <ScalarProperty Name="NomApePaciente" ColumnName="NomApePaciente" />
+                <ScalarProperty Name="dniPaciente" ColumnName="dniPaciente" />
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="codEvaluacion" ColumnName="codEvaluacion" />
+                <ScalarProperty Name="codEnfermedad" ColumnName="codEnfermedad" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="sangre" ColumnName="sangre" />
+                <ScalarProperty Name="orina" ColumnName="orina" />
+                <ScalarProperty Name="ekg" ColumnName="ekg" />
+                <ScalarProperty Name="spirometria" ColumnName="spirometria" />
+                <ScalarProperty Name="psicologia" ColumnName="psicologia" />
+                <ScalarProperty Name="rayosX" ColumnName="rayosX" />
+                <ScalarProperty Name="audicion" ColumnName="audicion" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="recomendaciones" ColumnName="recomendaciones" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarUsuario" FunctionName="CheckSalud_DBModel.Store.usp_ConsultarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ConsultarUsuario_Result">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_EliminarAnalisis" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEmpresa" FunctionName="CheckSalud_DBModel.Store.usp_EliminarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarMedico" FunctionName="CheckSalud_DBModel.Store.usp_EliminarMedico" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarPaciente" FunctionName="CheckSalud_DBModel.Store.usp_EliminarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarResultado" FunctionName="CheckSalud_DBModel.Store.usp_EliminarResultado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_InsertarAnalisis" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEmpresa" FunctionName="CheckSalud_DBModel.Store.usp_InsertarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEstadoPaciente" FunctionName="CheckSalud_DBModel.Store.usp_InsertarEstadoPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEvaluacion" FunctionName="CheckSalud_DBModel.Store.usp_InsertarEvaluacion" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarMedico" FunctionName="CheckSalud_DBModel.Store.usp_InsertarMedico" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarResultado" FunctionName="CheckSalud_DBModel.Store.usp_InsertarResultado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarUsuario" FunctionName="CheckSalud_DBModel.Store.usp_InsertarUsuario" />
+          <FunctionImportMapping FunctionImportName="usp_ListarAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_ListarAnalisis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarAnalisis_Result">
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="NombrePaciente" ColumnName="NombrePaciente" />
+                <ScalarProperty Name="ApellidoPaciente" ColumnName="ApellidoPaciente" />
+                <ScalarProperty Name="Lugar_de_trabajo" ColumnName="Lugar_de_trabajo" />
+                <ScalarProperty Name="TipoAnális" ColumnName="TipoAnális" />
+                <ScalarProperty Name="CostoAnálisis" ColumnName="CostoAnálisis" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarAuditor" FunctionName="CheckSalud_DBModel.Store.usp_ListarAuditor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarAuditor_Result">
+                <ScalarProperty Name="codAuditor" ColumnName="codAuditor" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEmpresa" FunctionName="CheckSalud_DBModel.Store.usp_ListarEmpresa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarEmpresa_Result">
+                <ScalarProperty Name="codEmpresa" ColumnName="codEmpresa" />
+                <ScalarProperty Name="Raz_soc_emp" ColumnName="Raz_soc_emp" />
+                <ScalarProperty Name="Ruc_emp" ColumnName="Ruc_emp" />
+                <ScalarProperty Name="Años_servicios" ColumnName="Años_servicios" />
+                <ScalarProperty Name="Estado_actual" ColumnName="Estado_actual" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Trabajadores_Evaluados" ColumnName="Trabajadores_Evaluados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEnfermedad" FunctionName="CheckSalud_DBModel.Store.usp_ListarEnfermedad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarEnfermedad_Result">
+                <ScalarProperty Name="codEnfermedad" ColumnName="codEnfermedad" />
+                <ScalarProperty Name="descEnfermedad" ColumnName="descEnfermedad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEspecialidad" FunctionName="CheckSalud_DBModel.Store.usp_ListarEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarEspecialidad_Result">
+                <ScalarProperty Name="codEspecialidad" ColumnName="codEspecialidad" />
+                <ScalarProperty Name="descEspecialidad" ColumnName="descEspecialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarMedico" FunctionName="CheckSalud_DBModel.Store.usp_ListarMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarMedico_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Numero_de_Colegiatura" ColumnName="Numero de Colegiatura" />
+                <ScalarProperty Name="Fecha_de_Nacimiento" ColumnName="Fecha de Nacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="Login_de_Usuario" ColumnName="Login de Usuario" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarMedico2" FunctionName="CheckSalud_DBModel.Store.usp_ListarMedico2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarMedico2_Result">
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPaciente" FunctionName="CheckSalud_DBModel.Store.usp_ListarPaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarPaciente_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Fecha_de_Nacimiento" ColumnName="Fecha de Nacimiento" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ubigeo" ColumnName="Ubigeo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Tipo_de_sangre" ColumnName="Tipo de sangre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo cliente" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha Ingreso" />
+                <ScalarProperty Name="Usuario_registro" ColumnName="Usuario registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPaciente2" FunctionName="CheckSalud_DBModel.Store.usp_ListarPaciente2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarPaciente2_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarResultados" FunctionName="CheckSalud_DBModel.Store.usp_ListarResultados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarResultados_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Fecha_de_nacimiento" ColumnName="Fecha de nacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Lugar_de_trabajo" ColumnName="Lugar de trabajo" />
+                <ScalarProperty Name="Tipo_de_examen" ColumnName="Tipo de examen" />
+                <ScalarProperty Name="Fecha_de_evaluacion" ColumnName="Fecha de evaluacion" />
+                <ScalarProperty Name="Peso__KG_" ColumnName="Peso (KG)" />
+                <ScalarProperty Name="Altura__Mts_" ColumnName="Altura (Mts)" />
+                <ScalarProperty Name="Examen_de_sangre" ColumnName="Examen de sangre" />
+                <ScalarProperty Name="Examen_de_orina" ColumnName="Examen de orina" />
+                <ScalarProperty Name="Electrocardiograma" ColumnName="Electrocardiograma" />
+                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+                <ScalarProperty Name="Examen_psicologico" ColumnName="Examen psicologico" />
+                <ScalarProperty Name="Rayos_X" ColumnName="Rayos X" />
+                <ScalarProperty Name="Examen_de_audicion" ColumnName="Examen de audicion" />
+                <ScalarProperty Name="Examen_de_vista" ColumnName="Examen de vista" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="Recomendaciones" ColumnName="Recomendaciones" />
+                <ScalarProperty Name="Medico_Evaluador" ColumnName="Medico Evaluador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarUbicacion" FunctionName="CheckSalud_DBModel.Store.usp_ListarUbicacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarUbicacion_Result">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarUltAnalisis" FunctionName="CheckSalud_DBModel.Store.usp_ListarUltAnalisis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarUltAnalisis_Result">
+                <ScalarProperty Name="codAnalisis" ColumnName="codAnalisis" />
+                <ScalarProperty Name="descAnalisis" ColumnName="descAnalisis" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarUltEvaluacion" FunctionName="CheckSalud_DBModel.Store.usp_ListarUltEvaluacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CheckSalud_DBModel.usp_ListarUltEvaluacion_Result">
+                <ScalarProperty Name="codEvaluacion" ColumnName="codEvaluacion" />
+                <ScalarProperty Name="Fec_Eva" ColumnName="Fec_Eva" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codMedico" ColumnName="codMedico" />
+                <ScalarProperty Name="codAuditor" ColumnName="codAuditor" />
+                <ScalarProperty Name="Fec_reg" ColumnName="Fec_reg" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

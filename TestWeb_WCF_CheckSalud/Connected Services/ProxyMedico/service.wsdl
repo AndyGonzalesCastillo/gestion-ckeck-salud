@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicioMedico" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioMedico_usp_ListarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ListarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_ListarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ListarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_InsertarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:usp_InsertarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_InsertarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usp_InsertarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_ActualizarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ActualizarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_ActualizarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ActualizarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_EliminarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:usp_EliminarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_EliminarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usp_EliminarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_ConsultarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ConsultarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IServicioMedico_usp_ConsultarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usp_ConsultarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioMedico">
+    <wsdl:operation name="usp_ListarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioMedico/usp_ListarMedico" message="tns:IServicioMedico_usp_ListarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioMedico/usp_ListarMedicoResponse" message="tns:IServicioMedico_usp_ListarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usp_InsertarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioMedico/usp_InsertarMedico" message="tns:IServicioMedico_usp_InsertarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioMedico/usp_InsertarMedicoResponse" message="tns:IServicioMedico_usp_InsertarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usp_ActualizarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioMedico/usp_ActualizarMedico" message="tns:IServicioMedico_usp_ActualizarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioMedico/usp_ActualizarMedicoResponse" message="tns:IServicioMedico_usp_ActualizarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usp_EliminarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioMedico/usp_EliminarMedico" message="tns:IServicioMedico_usp_EliminarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioMedico/usp_EliminarMedicoResponse" message="tns:IServicioMedico_usp_EliminarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usp_ConsultarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioMedico/usp_ConsultarMedico" message="tns:IServicioMedico_usp_ConsultarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioMedico/usp_ConsultarMedicoResponse" message="tns:IServicioMedico_usp_ConsultarMedico_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioMedico" type="tns:IServicioMedico">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="usp_ListarMedico">
+      <soap:operation soapAction="http://tempuri.org/IServicioMedico/usp_ListarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usp_InsertarMedico">
+      <soap:operation soapAction="http://tempuri.org/IServicioMedico/usp_InsertarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usp_ActualizarMedico">
+      <soap:operation soapAction="http://tempuri.org/IServicioMedico/usp_ActualizarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usp_EliminarMedico">
+      <soap:operation soapAction="http://tempuri.org/IServicioMedico/usp_EliminarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usp_ConsultarMedico">
+      <soap:operation soapAction="http://tempuri.org/IServicioMedico/usp_ConsultarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioMedico">
+    <wsdl:port name="BasicHttpBinding_IServicioMedico" binding="tns:BasicHttpBinding_IServicioMedico">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioMedico/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

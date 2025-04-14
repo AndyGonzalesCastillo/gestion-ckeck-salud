@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <style>
+        .fila-colorida {
+            background-color: lightblue;
+            font: bold;
+        }
+
+        .centrar-fila th {
+            text-align: center;
+        }
+    </style>
+    <h3>LISTADO DE ANALISIS - SERVICIO WCF ANALISIS</h3>
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Listado de Análisis</h2>
+
+    <form method="get" action="@Url.Action("Index")">
+        <input type="text" name="searchString" placeholder="Buscar por descripción" value="@Request.QueryString["searchString"]" />
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+        <span>Total de análisis: @ViewBag.TotalAnalisis</span> <!-- Mostrar el total de análisis aquí -->
+    </form>
+
+    <table class="table">
+        <tr class="fila-colorida centrar-fila">
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Fecha Registro</th>
+            <th>Costo</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var analisis in ViewBag.ListarAnalisis)
+        {
+            <tr id="row-@analisis.codAnalisis">
+                <td style="text-align: center;">@analisis.codAnalisis</td>
+                <td style="text-align: center;">@analisis.descAnalisis</td>
+                <td style="text-align: center;">@analisis.estAnalisis</td>
+                <td style="text-align: center;">@analisis.Fec_reg</td>
+                <td style="text-align: center;">@analisis.costo</td>
+                <td style="text-align: center;">
+                    <a href="@Url.Action("Actualizar", "Paciente", new { id = analisis.codAnalisis })" class="btn btn-primary">Editar</a>
+                    <button class="btn btn-danger" onclick="eliminarAnalisis('@analisis.codAnalisis')">Eliminar</button>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <a href="@Url.Action("Agregar", "Paciente")" class="btn btn-success">Nuevo</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    function eliminarAnalisis(codAnalisis) {
+        if (confirm("¿Estás seguro de que quieres eliminar este análisis?")) {
+            $.ajax({
+                url: '@Url.Action("Eliminar", "Paciente")',
+                type: 'POST',
+                data: { codAnalisis: codAnalisis },
+                success: function(response) {
+                    if (response.success) {
+                        location.reload(); 
+                    } else {
+                        alert("Error al eliminar el análisis.");
+                    }
+                }
+            });
+        }
+    }
+    </script>
+
+    <style>
+        .fila-colorida {
+            background-color: lightblue;
+            font-weight: bold;
+        }
+
+        .centrar-fila th, .centrar-fila td {
+            text-align: center;
+        }
+
+        .btn {
+            margin-right: 5px;
+        }
+    </style>
+
+</body>
+</html>

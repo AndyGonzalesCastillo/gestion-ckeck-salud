@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicioAnalisis" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCF_CheckSalud" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioAnalisis_ConsultarAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ConsultarAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ListarAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ListarAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_InsertarAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_InsertarAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ActualizarAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ActualizarAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_EliminarAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_EliminarAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ConsultarUltimoAnalisis_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUltimoAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAnalisis_ConsultarUltimoAnalisis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUltimoAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioAnalisis">
+    <wsdl:operation name="ConsultarAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/ConsultarAnalisis" message="tns:IServicioAnalisis_ConsultarAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/ConsultarAnalisisResponse" message="tns:IServicioAnalisis_ConsultarAnalisis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/ListarAnalisis" message="tns:IServicioAnalisis_ListarAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/ListarAnalisisResponse" message="tns:IServicioAnalisis_ListarAnalisis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/InsertarAnalisis" message="tns:IServicioAnalisis_InsertarAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/InsertarAnalisisResponse" message="tns:IServicioAnalisis_InsertarAnalisis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/ActualizarAnalisis" message="tns:IServicioAnalisis_ActualizarAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/ActualizarAnalisisResponse" message="tns:IServicioAnalisis_ActualizarAnalisis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/EliminarAnalisis" message="tns:IServicioAnalisis_EliminarAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/EliminarAnalisisResponse" message="tns:IServicioAnalisis_EliminarAnalisis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUltimoAnalisis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAnalisis/ConsultarUltimoAnalisis" message="tns:IServicioAnalisis_ConsultarUltimoAnalisis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAnalisis/ConsultarUltimoAnalisisResponse" message="tns:IServicioAnalisis_ConsultarUltimoAnalisis_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioAnalisis" type="tns:IServicioAnalisis">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/ConsultarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/ListarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/InsertarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/ActualizarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/EliminarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUltimoAnalisis">
+      <soap:operation soapAction="http://tempuri.org/IServicioAnalisis/ConsultarUltimoAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioAnalisis">
+    <wsdl:port name="BasicHttpBinding_IServicioAnalisis" binding="tns:BasicHttpBinding_IServicioAnalisis">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WCF_CheckSalud/ServicioAnalisis/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
